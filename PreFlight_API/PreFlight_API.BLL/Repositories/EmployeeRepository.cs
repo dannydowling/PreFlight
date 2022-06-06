@@ -1,5 +1,6 @@
 ﻿using PreFlight.AI.Server.Services.SQL;
 using PreFlight.Infrastructure.Repositories;
+using PreFlight_API.BLL.Models;
 using PreFlightAI.Shared.Employee;
 using PreFlightAI.Shared.Employee.Ghosts;
 using System;

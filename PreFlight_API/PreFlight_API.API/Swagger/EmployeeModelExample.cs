@@ -17,10 +17,9 @@ namespace PreFlight_API.API.Swagger
                 FirstName = "Danny",
                 LastName = "Dowling",
                 BirthDate = dnow,
-                JobCategoryId = 1,
+                JobCategoryEnum = 1,
                 PhoneNumber = "9073213215",
                 Locations = { "Juneau", "Sitka"},
-                employeeWeatherList = { },
                 Password = "Password",
                 JoinedDate = dnow               
             };

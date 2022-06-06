@@ -17,7 +17,7 @@ namespace PreFlight_API.BLL.Models
 
         public virtual string City { get; set; }
 
-        public virtual Guid JobCategoryId { get; set; }
+        public virtual JobCategoryEnum jobCategoryEnum { get; set; }
 
         [DataType(DataType.PhoneNumber)]
         public virtual string PhoneNumber { get; set; }
