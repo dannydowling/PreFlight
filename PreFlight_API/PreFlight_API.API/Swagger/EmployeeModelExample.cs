@@ -12,19 +12,17 @@ namespace PreFlight_API.API.Swagger
             var dnow = DateTime.UtcNow;
             return new Employee
             {
-                Id = Guid.NewGuid(),
+                EmployeeId = Guid.NewGuid(),
                 Email = "KauraiRentals@gmail.com",
                 FirstName = "Danny",
                 LastName = "Dowling",
                 BirthDate = dnow,
                 JobCategoryId = 1,
                 PhoneNumber = "9073213215",
-                employeeLocations = { "Juneau", "Sitka"},
+                Locations = { "Juneau", "Sitka"},
                 employeeWeatherList = { },
                 Password = "Password",
-                JoinedDate = dnow,
-                RowVersion = dnow
-               
+                JoinedDate = dnow               
             };
         }
     }

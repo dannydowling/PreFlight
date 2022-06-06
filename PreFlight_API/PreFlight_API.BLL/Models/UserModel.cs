@@ -8,35 +8,37 @@ namespace PreFlight_API.BLL.Models
 {
     public class UserModel
     {        
-        public Guid Id { get; set; }
+        public Guid UserModelId { get; set; }
         
         [Required]
         [StringLength(45, MinimumLength = 1, ErrorMessage = "First name is too long.")]
-        public string FirstName { get; set; }
+        public virtual string FirstName { get; set; }
 
         [Required]
         [StringLength(45, MinimumLength = 1, ErrorMessage = "Last name is too long.")]
-        public string LastName { get; set; }
+        public virtual string LastName { get; set; }
 
         [Required]
         [EmailAddress]
-        public string Email { get; set; }
+        public virtual string Email { get; set; }
 
         [StringLength(1000, ErrorMessage = "Comment length can't exceed 1000 characters.")]
-        public string? Comment { get; set; }
+        public virtual string? Comment { get; set; }
+
+        public virtual byte[] ProfilePicture { get; set; }
 
         [Timestamp]
-        public byte[] RowVersion { get; set; }
+        public virtual byte[] RowVersion { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime JoinedDate { get; set; }
+        public virtual DateTime JoinedDate { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime? ExitDate { get; set; }
+        public virtual DateTime? ExitDate { get; set; }
 
-        public ICollection<Weather> Weathers { get; set; }
+        public virtual ICollection<Weather> Weathers { get; set; }
 
-        public JobCategory? JobCategory { get; set; }
+        public virtual JobCategory? JobCategory { get; set; }
         
         [DataType(DataType.Password)]
         [Required]

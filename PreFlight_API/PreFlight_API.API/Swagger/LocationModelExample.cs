@@ -13,7 +13,7 @@ namespace PreFlight_API.API.Swagger
             var dnow = DateTime.UtcNow;
             return new Location
             {
-                Id = Guid.NewGuid(),
+                LocationId = Guid.NewGuid(),
                 Name = "Juneau Airport",
                 Street = "Egan Drive",
                 Zip = "99801",

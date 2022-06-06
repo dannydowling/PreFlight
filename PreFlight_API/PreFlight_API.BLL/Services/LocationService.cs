@@ -83,7 +83,7 @@ namespace PreFlightAI.Server.Services
 
         public async Task DeleteLocationAsync(Location location)
         {
-            await _httpClient.DeleteAsync($"api/location/{location.Id}");
+            await _httpClient.DeleteAsync($"api/location/{location.LocationId}");
         }
     }
 }

@@ -14,8 +14,4 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.18.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\PreFlight_API.DAL.MySql\PreFlight_API.DAL.MySql.csproj" />
-  </ItemGroup>
-
 </Project>

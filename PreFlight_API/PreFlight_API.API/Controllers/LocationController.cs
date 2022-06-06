@@ -51,7 +51,7 @@ namespace PreFlight_API.API.Controllers
             }
 
             var result = await _locationService.CreateLocationAsync(_mapper.Map<BLL.Models.Location>(location));
-            return Created($"{result.Id}", _mapper.Map<Location>(result));
+            return Created($"{result.LocationId}", _mapper.Map<Location>(result));
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace PreFlight_API.API.Controllers
                 return BadRequest();
             }
 
-            location.Id = id;
+            location.LocationId = id;
             await _locationService.UpdateLocationAsync(_mapper.Map<BLL.Models.Location>(location));
             return Ok();
         }
