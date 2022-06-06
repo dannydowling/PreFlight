@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PreFlight_API.API.Models;
 using PreFlight_API.API.Swagger;
-using PreFlight_API.BLL.Contracts;
-using PreFlight_API.DAL.MySql.Models;
+using PreFlight_API.BLL;
 using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.Filters;
 using System;
@@ -53,7 +52,6 @@ namespace PreFlight_API.API.Controllers
         /// <param name="employee"></param>
         /// <returns>Returns created employee</returns>           
         [HttpPost("")]
-        [SwaggerResponseExample((int)HttpStatusCode.Created, typeof(EmployeeModelExample))]
         [SwaggerResponse((int)HttpStatusCode.Created, Type = typeof(Employee), Description = "Returns created employee")]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError, Description = "Unexpected error")]
         public async Task<IActionResult> CreateEmployeeAsync([FromBody] Employee employee)
@@ -73,8 +71,7 @@ namespace PreFlight_API.API.Controllers
         /// <param name="id">Employee Id</param>
         /// <returns>Returns finded employee</returns>
         [HttpGet("{id}")]
-        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(Employee), Description = "Returns finded employee")]
-        [SwaggerResponseExample((int)HttpStatusCode.OK, typeof(EmployeeModelExample))]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(Employee), Description = "Returns finded employee")]       
         [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Missing or invalid employee id")]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError, Description = "Unexpected error")]
         public async Task<IActionResult> GetEmployeeAsync([FromRoute] Guid id)
@@ -100,7 +97,6 @@ namespace PreFlight_API.API.Controllers
         /// <param name="employee">Employee parameters</param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        [SwaggerRequestExample(typeof(Employee), typeof(EmployeeModelExample))]
         [SwaggerResponse((int)HttpStatusCode.OK, Description = "Returns 200")]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Missing or invalid car object")]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError, Description = "Unexpected error")]

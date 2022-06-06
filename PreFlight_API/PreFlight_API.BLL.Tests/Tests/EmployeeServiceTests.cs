@@ -1,10 +1,8 @@
 using AutoFixture;
 using PreFlight_API.BLL.Tests.Helpers;
 using Xunit;
-using PreFlight_API.DAL.MySql.Models;
 using System;
 using Newtonsoft.Json;
-using PreFlight_API.BLL.Models;
 
 namespace PreFlight_API.BLL.Tests
 {

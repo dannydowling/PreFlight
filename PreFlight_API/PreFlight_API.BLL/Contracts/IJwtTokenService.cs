@@ -1,4 +1,4 @@
-namespace PreFlight_API.BLL.Contracts
+namespace PreFlight_API.BLL
 {
     public interface IJwtTokenService
     {

@@ -9,7 +9,7 @@ using PreFlight_API.DAL.MySql.Contract;
 using System;
 using Renci.SshNet;
 using PreFlight_API.DAL.MySql.Models;
-using PreFlight_API.BLL.Contracts;
+using PreFlight_API.BLL.D;
 using PreFlight_API.BLL.Models;
 
 namespace PreFlightAI.Server.Services

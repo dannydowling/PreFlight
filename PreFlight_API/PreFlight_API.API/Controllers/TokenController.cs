@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PreFlight_API.BLL.Contracts;
+using PreFlight_API.BLL;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Net;

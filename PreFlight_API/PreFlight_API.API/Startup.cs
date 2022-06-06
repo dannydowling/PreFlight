@@ -44,12 +44,8 @@ namespace PreFlight_API.API
             var appSettings = appSettingsSection.Get<AppSettings>();
 
             services.AddControllers();
-
-            services.AddWebServices(
-                BLLOptionsSection: Configuration.GetSection("AppSettings"),
-                DALOptionSection: Configuration.GetSection("ConnectionStrings")
-            );
-
+                        
+            services.AddSignalR();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddHttpClient();
 
@@ -162,8 +158,6 @@ namespace PreFlight_API.API
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseAuthorization();
-
-            app.UseWebServices();
 
             app.UseEndpoints(endpoints =>
             {

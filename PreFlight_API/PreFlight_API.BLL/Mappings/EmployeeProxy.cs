@@ -5,9 +5,9 @@ using System;
 
 namespace PreFlight_API.BLL.Mappings
 {
-    public class EmployeeMapping : Profile
+    public class EmployeeProxy : Profile
     {
-        public EmployeeMapping()
+        public EmployeeProxy()
         {
             CreateMap<Employee, EmployeeEntity>()
                 .ForMember(d => d.Id, opt => opt.MapFrom(src => src.Id.ToString()))

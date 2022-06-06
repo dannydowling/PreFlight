@@ -5,11 +5,8 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using AutoMapper;
-using PreFlight_API.DAL.MySql.Contract;
 using System;
-using Renci.SshNet;
-using PreFlight_API.DAL.MySql.Models;
-using PreFlight_API.BLL.Contracts;
+using PreFlight_API.BLL;
 using PreFlight_API.BLL.Models;
 
 namespace PreFlightAI.Server.Services

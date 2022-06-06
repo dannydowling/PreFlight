@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PreFlight_API.API.Models;
 using PreFlight_API.API.Swagger;
-using PreFlight_API.BLL.Contracts;
+using PreFlight_API.BLL;
 using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.Filters;
 using System;
@@ -40,7 +40,6 @@ namespace PreFlight_API.API.Controllers
         /// <param name="UserModel"></param>
         /// <returns>Returns created user</returns>           
         [HttpPost("")]
-        [SwaggerResponseExample((int)HttpStatusCode.Created, typeof(UserModelExample))]
         [SwaggerResponse((int)HttpStatusCode.Created, Type = typeof(UserModel), Description = "Returns created user")]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError, Description = "Unexpected error")]
         public async Task<IActionResult> CreateUserAsync([FromBody] UserModel user)
@@ -60,8 +59,7 @@ namespace PreFlight_API.API.Controllers
         /// <param name="id">User Id</param>
         /// <returns>Returns finded user</returns>
         [HttpGet("{id}")]
-        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(UserModel), Description = "Returns finded user")]
-        [SwaggerResponseExample((int)HttpStatusCode.OK, typeof(UserModelExample))]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(UserModel), Description = "Returns finded user")]       
         [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Missing or invalid user id")]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError, Description = "Unexpected error")]
         public async Task<IActionResult> GetUserAsync([FromRoute] Guid id)
@@ -87,7 +85,6 @@ namespace PreFlight_API.API.Controllers
         /// <param name="user">User parameters</param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        [SwaggerRequestExample(typeof(UserModel), typeof(UserModelExample))]
         [SwaggerResponse((int)HttpStatusCode.OK, Description = "Returns 200")]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Missing or invalid user object")]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError, Description = "Unexpected error")]

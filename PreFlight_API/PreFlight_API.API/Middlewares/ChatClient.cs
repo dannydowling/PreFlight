@@ -35,7 +35,7 @@ namespace PreFlight_API.API.Middleware
             {
                 //creating hubconnction   
                 _hubConnection = new HubConnectionBuilder()
-                                        .WithUrl((_navigationManager.ToAbsoluteUri("/Chat")))     
+                                        .WithUrl(_navigationManager.ToAbsoluteUri("/Chat"))     
                                         .Build();
                 
                 Console.WriteLine("ChatClient: calling Start()");

@@ -20,6 +20,7 @@ namespace PreFlight_API.DbUpConsole
                 connectionString = args.FirstOrDefault();
             }
 
+
             if (string.IsNullOrEmpty(connectionString))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -28,12 +29,18 @@ namespace PreFlight_API.DbUpConsole
                 return -1;
             }
 
-            EnsureDatabase.For.MySqlDatabase(connectionString);
+            //EnsureDatabase.For.MySqlDatabase(connectionString, 250);
+
+            //DbUp.Builder.UpgradeEngineBuilder upgrader = new DbUp.Builder.UpgradeEngineBuilder();
+            //upgrader.Configure(c => c.AddVariables(DeployChanges.To.MySqlDatabase(connectionString)));
+            //upgrader.WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly());
+            //upgrader.LogToConsole();
+            //upgrader.Build();
 
             var upgrader =
                 DeployChanges.To
-                    .MySqlDatabase(connectionString)
-                    .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly())
+                .MySqlDatabase(connectionString)
+                .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly())
                     .LogToConsole()
                     .Build();
 

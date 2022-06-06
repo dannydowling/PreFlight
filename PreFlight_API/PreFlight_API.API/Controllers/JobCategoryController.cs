@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PreFlight_API.API.Models;
 using PreFlight_API.API.Swagger;
-using PreFlight_API.BLL.Contracts;
+using PreFlight_API.BLL;
 using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.Filters;
 using System;
@@ -34,8 +34,6 @@ namespace PreFlight_API.API.Controllers
             _jobCategoryService = jobCategoryService ?? throw new ArgumentNullException(nameof(jobCategoryService));
         }
 
-
-
           /// <summary>
         /// Get JobCategory by id
         /// </summary>
@@ -43,7 +41,6 @@ namespace PreFlight_API.API.Controllers
         /// <returns>Returns finded jobCategory</returns>
         [HttpGet("{id}")]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(JobCategory), Description = "Returns finded JobCategory")]
-        [SwaggerResponseExample((int)HttpStatusCode.OK, typeof(JobCategoryModelExample))]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Missing or invalid JobCategory id")]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError, Description = "Unexpected error")]
         public async Task<IActionResult> GetJobCategoryAsync([FromRoute] Guid id)
