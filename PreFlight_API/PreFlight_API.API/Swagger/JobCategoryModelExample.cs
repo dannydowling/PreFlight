@@ -1,4 +1,4 @@
-using PreFlight_API.API.Models;
+using PreFlight_API.BLL.Models;
 using Swashbuckle.AspNetCore.Filters;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -7,12 +7,12 @@ namespace PreFlight_API.API.Swagger
 {
     public class JobCategoryModelExample : IExamplesProvider<JobCategory>
     {
-        public Employee GetExamples()
+        public JobCategory GetExamples()
         {
             return new JobCategory
             {
                 Id = Guid.NewGuid(),
-                JobCategoryName = JobCategory.User               
+                jobCategory = JobCategoryEnum.User               
             };
         }
     }

@@ -7,9 +7,8 @@ using Microsoft.AspNetCore.Http;
 using AutoMapper;
 using PreFlight_API.DAL.MySql.Contract;
 using System;
-using Renci.SshNet;
 using PreFlight_API.DAL.MySql.Models;
-using PreFlight_API.BLL.D;
+using PreFlight_API.BLL;
 using PreFlight_API.BLL.Models;
 
 namespace PreFlightAI.Server.Services
@@ -69,7 +68,7 @@ namespace PreFlightAI.Server.Services
             return _mapper.Map<IEnumerable<Weather>>(weathers);
         }
 
-        public async Task<Weather> AddWeather(Weather weather)
+        public async Task<Weather> CreateWeatherAsync(Weather weather)
         {
             var weatherJson =
                 new StringContent(JsonSerializer.Serialize(weather), Encoding.UTF8, "application/json");
@@ -93,9 +92,17 @@ namespace PreFlightAI.Server.Services
             await _httpClient.PutAsync($"/api/weather/{weather.Id}", weatherJson);
         }
 
-        public async Task DeleteWeather(double AirPressure, double Temperature)
+        public async Task DeleteWeather(Guid id)
         {
-            await _httpClient.DeleteAsync($"/api/user/weather/{AirPressure}, {Temperature}");
+            await _httpClient.DeleteAsync($"/api/user/weather/{id}");
+        }
+
+        public async Task<Weather> GetWeatherById(Guid Id)
+        {
+            var weather = await JsonSerializer.DeserializeAsync<WeatherEntity>
+                (await _httpClient.GetStreamAsync($"/api/weather/{Id}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+            return _mapper.Map<Weather>(weather);
         }
     }
 }

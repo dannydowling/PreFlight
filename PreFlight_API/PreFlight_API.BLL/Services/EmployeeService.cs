@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Http;
 using AutoMapper;
 using System;
 using PreFlight_API.BLL;
+using PreFlight_API.DAL.MySql.Contract;
+using PreFlight_API.DAL.MySql.Models;
 using PreFlight_API.BLL.Models;
 
 namespace PreFlightAI.Server.Services

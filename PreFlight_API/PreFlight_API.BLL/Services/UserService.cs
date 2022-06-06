@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 using AutoMapper;
 using PreFlight_API.DAL.MySql.Models;
 using System;
-using PreFlight_API.BLL.D;
+using PreFlight_API.BLL;
 using PreFlight_API.DAL.MySql.Contract;
 using PreFlight_API.BLL.Models;
 
@@ -36,7 +36,7 @@ namespace PreFlightAI.Server.Services
         }
 
 
-        public async Task<IEnumerable<UserModel>> GetAllUserListAsync(int pageNumber, int pageSize)
+        public async Task<IEnumerable<UserModel>> GetUserListAsync(int pageNumber, int pageSize)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace PreFlightAI.Server.Services
             return _mapper.Map<IEnumerable<UserModel>>(users);
         }
 
-        public async Task<UserModel> GetUserById(Guid id)
+        public async Task<UserModel> GetUserAsync(Guid id)
         {
             var user =  await JsonSerializer.DeserializeAsync<UserModel>
                 (await _httpClient.GetStreamAsync($"api/user/{id}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
@@ -60,7 +60,7 @@ namespace PreFlightAI.Server.Services
             return _mapper.Map<UserModel>(user);
         }
 
-        public async Task<UserModel> AddUser(UserModel user)
+        public async Task<UserModel> CreateUserAsync(UserModel user)
         {
             var userJson =
                 new StringContent(JsonSerializer.Serialize(user), Encoding.UTF8, "application/json");
@@ -75,7 +75,7 @@ namespace PreFlightAI.Server.Services
             return null;
         }
 
-        public async Task UpdateUser(UserModel user)
+        public async Task UpdateUserAsync(UserModel user)
         {
             var userJson =
                 new StringContent(JsonSerializer.Serialize(user), Encoding.UTF8, "application/json");
@@ -83,7 +83,7 @@ namespace PreFlightAI.Server.Services
             await _httpClient.PutAsync("api/user", userJson);
         }
 
-        public async Task DeleteUser(Guid id)
+        public async Task DeleteUserAsync(Guid id)
         {
             await _httpClient.DeleteAsync($"api/user/{id}");
         }

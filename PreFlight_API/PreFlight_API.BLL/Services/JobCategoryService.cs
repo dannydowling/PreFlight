@@ -7,7 +7,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
-using PreFlight_API.BLL.D;
+using PreFlight_API.BLL;
 using PreFlight_API.BLL.Models;
 
 namespace PreFlightAI.Server.Services

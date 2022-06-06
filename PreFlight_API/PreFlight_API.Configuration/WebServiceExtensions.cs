@@ -5,9 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Polly;
 using PreFlight_API.BLL;
-using PreFlight_API.BLL.Contracts;
 using PreFlight_API.BLL.Models;
 using PreFlight_API.DAL.MySql;
 using PreFlight_API.DAL.MySql.Contract;
@@ -34,19 +32,19 @@ namespace Microsoft.Extensions.DependencyInjection
                 throw new ArgumentNullException(nameof(DALOptionSection));
             }
 
-            var bllSettings = BLLOptionsSection.Get<PreFlightBLLOptions>();
+            var bllSettings = new PreFlightBLLOptions();
 
             services.Configure<PreFlightBLLOptions>(opt =>
             {
-                opt.JwtSecretKey = BLLOptionsSection.GetValue<string>("JwtSecretKey");
-                opt.WebApiUrl = BLLOptionsSection.GetValue<string>("WebApiUrl");
+                opt.JwtSecretKey = bllSettings.JwtSecretKey;
+                opt.WebApiUrl = bllSettings.WebApiUrl;
             });
             services.Configure<PreFlightMySqlRepositoryOption>(opt =>
             {
-                 opt.UserDbConnectionString = DALOptionSection.GetValue<string>("UserDbConnectionString");
-                 opt.WeatherDbConnectionString = DALOptionSection.GetValue<string>("WeatherDbConnectionString");
-                 opt.EmployeeDbConnectionString = DALOptionSection.GetValue<string>("EmployeeDbConnectionString");
-                 opt.LocationDbConnectionString = DALOptionSection.GetValue<string>("LocationDbConnectionString");
+                 opt.UserDbConnectionString = DALOptionSection.GetConnectionString("UserDbConnectionString");
+                 opt.WeatherDbConnectionString = DALOptionSection.GetConnectionString("WeatherDbConnectionString");
+                 opt.EmployeeDbConnectionString = DALOptionSection.GetConnectionString("EmployeeDbConnectionString");
+                 opt.LocationDbConnectionString = DALOptionSection.GetConnectionString("LocationDbConnectionString");
 
             });
 
@@ -62,20 +60,12 @@ namespace Microsoft.Extensions.DependencyInjection
             services.TryAddScoped<IWeatherService, WeatherService>();
             services.TryAddScoped<IJwtTokenService, JwtTokenService>();
 
-            services.AddHttpClient();
-            services.AddHttpClient<TodosMockProxyService>(c =>
-            {
-                c.BaseAddress = new Uri(bllSettings.WebApiUrl);
-            }).AddTransientHttpErrorPolicy(p =>
-                p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(600))
-            );
-
+        
             services.AddHealthChecks()
                 .AddCheck<UserRepository>("UserRepository")
                 .AddCheck<EmployeeRepository>("EmployeeRepository")
                 .AddCheck<WeatherRepository>("WeatherRepository")
                 .AddCheck<LocationRepository>("LocationRepository");
-                //.AddCheck<TodosMockProxyService>("TodosMockProxyService");
 
             return services;
         }

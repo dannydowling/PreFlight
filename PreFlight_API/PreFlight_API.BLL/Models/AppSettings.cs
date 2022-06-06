@@ -1,4 +1,4 @@
-namespace PreFlight_API.API.Models
+namespace PreFlight_API.BLL.Models
 {
     public class AppSettings
     {

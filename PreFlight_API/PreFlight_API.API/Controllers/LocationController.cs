@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PreFlight_API.API.Models;
+using PreFlight_API.BLL.Models;
 using PreFlight_API.API.Swagger;
-using PreFlight_API.BLL.Contracts;
+using PreFlight_API.BLL;
 using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.Filters;
 using System;

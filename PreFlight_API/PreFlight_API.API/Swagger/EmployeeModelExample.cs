@@ -1,4 +1,4 @@
-using PreFlight_API.API.Models;
+using PreFlight_API.BLL.Models;
 using Swashbuckle.AspNetCore.Filters;
 using System;
 using System.ComponentModel.DataAnnotations;

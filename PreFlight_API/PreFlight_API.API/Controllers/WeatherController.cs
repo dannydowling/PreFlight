@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PreFlight_API.API.Models;
+using PreFlight_API.BLL.Models;
 using PreFlight_API.API.Swagger;
-using PreFlight_API.BLL.Contracts;
+using PreFlight_API.BLL;
 using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.Filters;
 using System;
@@ -71,7 +71,7 @@ namespace PreFlight_API.API.Controllers
                 return BadRequest();
             }
 
-            var result = await _weatherService.GetWeatherAsync(id);
+            var result = await _weatherService.GetWeatherById(id);
             if (result == null)
             {
                 return NotFound(new { id });
@@ -99,7 +99,7 @@ namespace PreFlight_API.API.Controllers
             }
 
             weather.Id = id;
-            await _weatherService.UpdateWeatherAsync(_mapper.Map<BLL.Models.Weather>(weather));
+            await _weatherService.UpdateWeather(_mapper.Map<BLL.Models.Weather>(weather));
             return Ok();
         }
 
@@ -119,7 +119,7 @@ namespace PreFlight_API.API.Controllers
                 return BadRequest();
             }
 
-            await _weatherService.DeleteWeatherAsync(id);
+            await _weatherService.DeleteWeather(id);
             return Ok();
         }
 
@@ -128,14 +128,14 @@ namespace PreFlight_API.API.Controllers
         /// </summary>
         /// <param name="pageNumber">Page number</param>
         /// <param name="pageSize">Page size</param>
-        /// /// <param name="AirPressure">Page number</param>
-        /// <param name="Temperature">Page size</param>
+        /// <param name="airPressure"></param>
+        /// <param name="temperature"></param>
         /// <returns></returns>
         [HttpGet("")]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(IEnumerable<Weather>), Description = "Returns finded weathers array")]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Missing or invalid: pageNumber,  pageSize, AirPressure or Temperature")]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError, Description = "Unexpected error")]
-        public async Task<IActionResult> GetWeatherListAsync([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 50, [FromQuery] double? airPressure, [FromQuery] double? temperature)
+        public async Task<IActionResult> GetWeatherListAsync([FromQuery] double? temperature, [FromQuery] double? airPressure, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 50)
         {
             if (pageNumber == 0 || pageSize == 0)
             {

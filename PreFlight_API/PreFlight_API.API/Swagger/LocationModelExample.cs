@@ -1,4 +1,4 @@
-using PreFlight_API.API.Models;
+using PreFlight_API.BLL.Models;
 using Swashbuckle.AspNetCore.Filters;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +8,7 @@ namespace PreFlight_API.API.Swagger
 {
     public class LocationModelExample : IExamplesProvider<Location>
     {
-        public Employee GetExamples()
+        public Location GetExamples()
         {
             var dnow = DateTime.UtcNow;
             return new Location
@@ -18,7 +18,7 @@ namespace PreFlight_API.API.Swagger
                 Street = "Egan Drive",
                 Zip = "99801",
                 City =  "Juneau",
-                Country = Country.America
+                Country = CountryEnum.America
                
             };
         }
