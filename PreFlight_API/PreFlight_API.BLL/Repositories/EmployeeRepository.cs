@@ -1,8 +1,6 @@
-﻿using PreFlight.AI.Server.Services.SQL;
-using PreFlight.Infrastructure.Repositories;
+﻿using PreFlight.Infrastructure.Repositories;
+using PreFlight_API.BLL.Contexts;
 using PreFlight_API.BLL.Models;
-using PreFlightAI.Shared.Employee;
-using PreFlightAI.Shared.Employee.Ghosts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +9,7 @@ namespace PreFlight.Infrastructure.Repositories
 {
     public class EmployeeRepository : GenericRepository<Employee>
     {
-        public EmployeeRepository(ServerDbContext context) : base(context)
+        public EmployeeRepository(GeneralDbContext context) : base(context)
         {
         }
 
@@ -40,9 +38,12 @@ namespace PreFlight.Infrastructure.Repositories
             return profilePicture;
         }
 
-        public override IEnumerable<Employee> All()
+        public override IEnumerable<Employee> All(Guid locationId)
         {
-            return base.All();
+            var employees = context.Employees.Select(
+                c => (IEnumerable<GhostEmployee>)c.Locations.Where(d => d.LocationId == locationId)) as IEnumerable<Employee>;
+
+            return employees;
         }
 
         public override Employee Add (Employee entity)
@@ -65,7 +66,7 @@ namespace PreFlight.Infrastructure.Repositories
             employee.PhoneNumber = employee.PhoneNumber;
             employee.Street = employee.Street;
             employee.Zip = employee.Zip;
-            employee.JobCategoryId = employee.JobCategoryId;
+            employee.JobCategory = employee.JobCategory;
             employee.Comment = employee.Comment;
             employee.ExitDate = employee.ExitDate;
             employee.JoinedDate = employee.JoinedDate;

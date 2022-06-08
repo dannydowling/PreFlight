@@ -1,6 +1,7 @@
 using PreFlight_API.BLL.Models;
 using Swashbuckle.AspNetCore.Filters;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace PreFlight_API.API.Swagger
@@ -17,9 +18,13 @@ namespace PreFlight_API.API.Swagger
                 FirstName = "Danny",
                 LastName = "Dowling",
                 BirthDate = dnow,
-                JobCategoryEnum = 1,
+                JobCategory = "Owner",
                 PhoneNumber = "9073213215",
-                Locations = { "Juneau", "Sitka"},
+                Locations = IEnumerable<Location> 
+                { 
+                    Location juneau = new Location("Juneau"),
+                    Location sitka = new Location("sitka")
+                },
                 Password = "Password",
                 JoinedDate = dnow               
             };

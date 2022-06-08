@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PreFlight.AI.Server.Services.SQL;
 using PreFlight.AI.Shared.Things;
 using PreFlight.Infrastructure.Repositories;
-using PreFlightAI.Shared.Employee;
-using PreFlightAI.Shared.Employee.Ghosts;
+using PreFlight_API.BLL.Contexts;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +12,7 @@ namespace PreFlight.Infrastructure.Repositories
 {
     public class OrderRepository : GenericRepository<Order>
     {
-        public OrderRepository(ServerDbContext context) : base(context)
+        public OrderRepository(GeneralDbContext context) : base(context)
         {
         }
 

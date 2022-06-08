@@ -10,7 +10,7 @@ namespace PreFlightAI.Shared.Customers.Proxies
     public class CustomerProxy : UserModel
     {
 
-        CustomerRepository userRepository;
+        UserRepository userRepository;
 
         public override byte[] ProfilePicture
         {

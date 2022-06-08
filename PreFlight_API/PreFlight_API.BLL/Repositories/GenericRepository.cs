@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PreFlight_API.BLL.Contexts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,9 +8,9 @@ namespace PreFlight.Infrastructure.Repositories
 {
     public abstract class GenericRepository<T> : IRepository<T> where T : class
     {
-        protected ServerDbContext context;
+        protected GeneralDbContext context;
 
-        public GenericRepository(ServerDbContext context)
+        public GenericRepository(GeneralDbContext context)
         {
             this.context = context;
         }

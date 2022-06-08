@@ -2,13 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PreFlight_API.BLL.Contexts;
 using PreFlight_API.BLL.Models;
 
 namespace PreFlight.Infrastructure.Repositories
 {
-    public class CustomerRepository : GenericRepository<UserModel>
+    public class UserRepository : GenericRepository<UserModel>
     {
-        public CustomerRepository(DBContext context) : base(context)
+        public UserRepository(GeneralDbContext context) : base(context)
         {
         }
 

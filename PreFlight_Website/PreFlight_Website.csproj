@@ -4,4 +4,9 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PreFlight_API\PreFlight_API.API\PreFlight_API.API.csproj" />
+    <ProjectReference Include="..\PreFlight_API\PreFlight_API.BLL\PreFlight_API.BLL.csproj" />
+  </ItemGroup>
+
 </Project>

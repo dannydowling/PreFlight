@@ -1,4 +1,4 @@
-﻿using PreFlightAI.Shared.Customers;
+﻿using PreFlight_API.BLL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace PreFlight.AI.Shared.Things
 
         public virtual ICollection<LineItem> LineItems { get; set; }
 
-        public virtual Customer Customer { get; set; }
+        public virtual UserModel Customer { get; set; }
         public Guid CustomerId { get; set; }
 
         // SQLite doesn't support DateTimeOffset :(

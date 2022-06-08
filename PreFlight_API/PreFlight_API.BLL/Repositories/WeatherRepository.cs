@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PreFlight.AI.Server.Services.SQL;
 using PreFlight.Infrastructure.Repositories;
-using PreFlightAI.Shared.Places;
+using PreFlight_API.BLL.Contexts;
+using PreFlight_API.BLL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace PreFlight.Infrastructure.Repositories
 {
     public class WeatherRepository : GenericRepository<Weather>
     {
-        public WeatherRepository(ServerDbContext context) : base(context)
+        public WeatherRepository(GeneralDbContext context) : base(context)
         {
 
         }

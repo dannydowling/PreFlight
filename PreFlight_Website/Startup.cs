@@ -1,13 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
+using PreFlight_API.API.Middleware;
+using PreFlight_API.BLL;
+using PreFlight_API.BLL.Contexts;
+using PreFlight_API.BLL.Models;
 
 namespace PreFlight_Website
 {
@@ -24,6 +26,16 @@ namespace PreFlight_Website
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.Configure<PreFlightBLLOptions>(opt =>
+            {
+                opt.JwtSecretKey = bllSettings.JwtSecretKey;
+                opt.WebApiUrl = bllSettings.WebApiUrl;
+            });
+            services.AddDbContext<GeneralDbContext>(
+             options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
+
+            services.TryAddScoped<IJwtTokenService, JwtTokenService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +62,7 @@ namespace PreFlight_Website
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapHub<ChatHub>("/Chat");
             });
         }
     }

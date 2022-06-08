@@ -162,22 +162,7 @@ namespace PreFlight_API.BLL.Models
             }
         }
 
-        public override Guid JobCategoryId
-        {
-            get
-            {
-                Load();
-
-                return base.JobCategoryId;
-            }
-            set
-            {
-                Load();
-
-                base.JobCategoryId = value;
-            }
-        }
-
+ 
   
         public override string PhoneNumber 
         {
@@ -214,7 +199,6 @@ namespace PreFlight_API.BLL.Models
                 base.Zip = employee.Zip;
                 base.City = employee.City;
                 base.ProfilePicture = employee.ProfilePicture;
-                base.JobCategoryId = employee.JobCategoryId;
                 base.PhoneNumber = employee.PhoneNumber;
 
 
