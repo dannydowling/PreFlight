@@ -1,10 +1,11 @@
-﻿using System;
+﻿using PreFlight_API.BLL.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace PreFlight.AI.Shared.Things
 {
-    public class Product
+    public class Product : Entity
     {
         public Guid ProductId { get; private set; }
 

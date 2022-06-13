@@ -15,9 +15,9 @@ namespace PreFlight.Infrastructure.Repositories
 
         public override UserModel Get(Guid id)
         {
-            var customerId = context.Customers
-                .Where(c => c.CustomerId == id)
-                .Select(c => c.CustomerId)
+            var customerId = context.Users
+                .Where(c => c.UserModelId == id)
+                .Select(c => c.UserModelId)
                 .Single();
 
             return new GhostCustomer(() => base.Get(id))
@@ -30,7 +30,7 @@ namespace PreFlight.Infrastructure.Repositories
         {
 
             //lazily load up the profile picture when asked for it.
-            var profilePicture = context.Customers
+            var profilePicture = context.Users
                 .Where(c => c.FirstName + " " + c.LastName == lookup)
                 .Select(c => c.ProfilePicture)
                 .Single();
@@ -52,8 +52,8 @@ namespace PreFlight.Infrastructure.Repositories
 
         public override UserModel Update(UserModel entity)
         {
-            var user = context.Customers
-                .Single(c => c.CustomerId == entity.UserModelId);
+            var user = context.Users
+                .Single(c => c.UserModelId == entity.UserModelId);
 
             user.Email =        entity.Email;
             user.FirstName =    entity.FirstName;
@@ -66,11 +66,40 @@ namespace PreFlight.Infrastructure.Repositories
             return base.Update(user);
            
         }
-               
+
+        public void Save(UserModel user)
+        {
+
+            if (user.Id == 0)
+            {
+                var lastId = _lastId();
+                SetId(user, lastId++);
+            }
+
+            // Saving to the database
+            var old_User_Info = context.Find<UserModel>(user.Id);
+            context.Remove(old_User_Info);
+
+            context.Add(user);
+            context.SaveChanges();
+        }
+
+        private long _lastId()
+        {
+            var weather = context.Weathers.Where(x => x.Id == x.Id).Max();
+            return weather.Id;
+
+        }
+
+        private static void SetId(Entity entity, long id)
+        {
+            entity.GetType().GetProperty(nameof(Entity.Id)).SetValue(entity, id);
+        }
+
         public override void Delete(UserModel entity)
         {
-            var user = context.Customers
-                        .Single(c => c.CustomerId == entity.UserModelId);
+            var user = context.Users
+                        .Single(c => c.UserModelId == entity.UserModelId);
 
             context.Remove(user);
             context.SaveChanges();

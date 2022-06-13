@@ -20,14 +20,22 @@ namespace PreFlight_API.API.Swagger
                 BirthDate = dnow,
                 JobCategory = "Owner",
                 PhoneNumber = "9073213215",
-                Locations = IEnumerable<Location> 
-                { 
-                    Location juneau = new Location("Juneau"),
-                    Location sitka = new Location("sitka")
-                },
+                Locations = DannyAddress() ,
                 Password = "Password",
-                JoinedDate = dnow               
-            };
+                JoinedDate = dnow
+            }; 
+        }
+
+            private ICollection<Location> DannyAddress()
+            {
+            var addresses = new List<Location>();   
+
+            var address = Location.Create("1234 Main St", "Juneau", "AK", "99801", 58.1, 57.6, new[] { "AK" });
+
+            addresses.Add(address.Value);
+            return addresses;
+                
+            }
         }
     }
-}
+

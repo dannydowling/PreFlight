@@ -1,12 +1,14 @@
-﻿using System;
+﻿using CSharpFunctionalExtensions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using System.Text;
 
 namespace PreFlight_API.BLL.Models
 {
-    public class UserModel
+    public class UserModel : Entity
     {        
         public Guid UserModelId { get; set; }
         

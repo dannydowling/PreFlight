@@ -1,50 +1,84 @@
-﻿using PreFlight_API.BLL.Models;
+﻿using CSharpFunctionalExtensions;
+using PreFlight_API.BLL.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using System.Text;
 
 namespace PreFlight_API.BLL.Models
 {
-    public class Location
+    public class Location : Entity
     {
-        [Key]
-        public Guid LocationId { get; set; }
-        public string Name { get; set; }
-        public string Street { get; set; }
-        public string Zip { get; set; }
-        public string City { get; set; }
-        public CountryEnum Country { get; set; }
+        public string Street { get; }
+        public string City { get; }
+        public State State { get; }
+        public string ZipCode { get; }
+        public double Latitude { get; }
+        public double Longitude { get; }
 
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
-
-    }
-
-    public class Coordinates
-    {
-        [ForeignKey("LocationId")]
-        public int LocationId { get; set; }
-
-        public double Latitude { get; private set; }
-        public double Longitude { get; private set; }
-
-        public Coordinates(double latitude, double longitude)
+     
+        private Location(string street, string city, State state, string zipCode, double longitude, double latitude)
         {
-            Latitude = latitude;
             Longitude = longitude;
+            Latitude = latitude;
+            Street = street;
+            City = city;
+            State = state;
+            ZipCode = zipCode;
+        }
+
+        public static Result<Location, Error> Create(
+            string street, string city, string state, string zipCode, double latitude, double longitude,  string[] allStates)
+        {
+            State stateObject = State.Create(state, allStates).Value;
+
+            street = (street ?? "").Trim();
+            city = (city ?? "").Trim();
+            zipCode = (zipCode ?? "").Trim();
+
+            if (street.Length < 1 || street.Length > 100)
+                return Errors.General.InvalidLength("street");
+
+            if (city.Length < 1 || city.Length > 40)
+                return Errors.General.InvalidLength("city");
+
+            if (zipCode.Length < 1 || zipCode.Length > 5)
+                return Errors.General.InvalidLength("zip code");
+
+            return new Location(street, city, stateObject, zipCode, latitude, longitude);
         }
     }
 
-    public enum CountryEnum
+    public class State : ValueObject
     {
-        America = 0
-    }
+        public string Value { get; }
 
-    public enum LocationName
-    {
-        Juneau = 0,
-        Sitka = 1
+        private State(string value)
+        {
+            Value = value;
+        }
+
+        public static Result<State, Error> Create(string input, string[] allStates)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+                return Errors.General.ValueIsRequired();
+
+            string name = input.Trim().ToUpper();
+
+            if (name.Length > 2)
+                return Errors.General.InvalidLength();
+
+            if (allStates.Any(x => x == name) == false)
+                return Errors.Employee.InvalidState(name);
+
+            return new State(name);
+        }
+
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return Value;
+        }
     }
 }
