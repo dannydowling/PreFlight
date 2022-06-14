@@ -13,6 +13,7 @@ namespace PreFlight_API.BLL.Contexts
         public DbSet<Product> Products { get; set; }
 
         public DbSet<Weather> Weathers { get; set; }
+
         public DbSet<Location> Locations { get; set; }
 
         public DbSet<Employee> Employees { get; set; }
