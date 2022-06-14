@@ -38,7 +38,7 @@ namespace PreFlight.Infrastructure.Repositories
             return profilePicture;
         }
 
-        public override IEnumerable<Employee> All(Guid locationId)
+        public IEnumerable<Employee> All(Guid locationId)
         {
             var employees = context.Employees.Select(
                 c => (IEnumerable<GhostEmployee>)c.Locations.Where(d => d.LocationId == locationId)) as IEnumerable<Employee>;

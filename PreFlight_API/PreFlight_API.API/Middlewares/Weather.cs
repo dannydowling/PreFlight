@@ -42,7 +42,6 @@ namespace PreFlight_API.API.Middleware
 
             calculation = (((1.55 * calculation) + offset) / 38.5);
 
-            Weather currentWeather = new Weather();
             return Math.Round(calculation, 2);                       
         }
     }

@@ -26,8 +26,5 @@ namespace PreFlight_API.BLL.Models
 
         public virtual ICollection<Location> Locations { get; set; }
 
-   
-       
-
     }
 }

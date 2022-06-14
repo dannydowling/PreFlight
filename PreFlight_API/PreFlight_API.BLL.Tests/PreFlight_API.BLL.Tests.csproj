@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PreFlight_API.BLL\PreFlight_API.BLL.csproj" />
+    <ProjectReference Include="..\PreFlight_API.BLL\PreFlight_API.DomainModel.csproj" />
   </ItemGroup>
 
 </Project>

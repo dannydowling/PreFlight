@@ -11,12 +11,14 @@ namespace PreFlight_API.BLL.Models
 {
     public class Location : Entity
     {
-        public string Street { get; }
-        public string City { get; }
-        public State State { get; }
-        public string ZipCode { get; }
-        public double Latitude { get; }
-        public double Longitude { get; }
+
+        public Guid LocationId { get; set; }
+        public virtual string Street { get; set; }
+        public virtual string City { get; set; }
+        public virtual State State { get; set; }
+        public virtual string ZipCode { get; set; }
+        public virtual double Latitude { get; set; }
+        public virtual double Longitude { get; set; }
 
      
         private Location(string street, string city, State state, string zipCode, double longitude, double latitude)

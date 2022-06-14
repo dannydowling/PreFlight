@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PreFlight_API\PreFlight_API.API\PreFlight_API.API.csproj" />
-    <ProjectReference Include="..\PreFlight_API\PreFlight_API.BLL\PreFlight_API.BLL.csproj" />
+    <ProjectReference Include="..\PreFlight_API\PreFlight_API.BLL\PreFlight_API.DomainModel.csproj" />
   </ItemGroup>
 
 </Project>

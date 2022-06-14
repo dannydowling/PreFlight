@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreFlight_API.API", "PreFlight_API\PreFlight_API.API\PreFlight_API.API.csproj", "{2B44A9A1-72BC-47AF-9057-3DCF4FE5EAB0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreFlight_API.BLL", "PreFlight_API\PreFlight_API.BLL\PreFlight_API.BLL.csproj", "{467C087F-D038-4710-9900-4884BED37180}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreFlight_API.DomainModel", "PreFlight_API\PreFlight_API.BLL\PreFlight_API.DomainModel.csproj", "{467C087F-D038-4710-9900-4884BED37180}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{634A80BE-8084-4506-BD49-6F1B62A19EFF}"
 EndProject
