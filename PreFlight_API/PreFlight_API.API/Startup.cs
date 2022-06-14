@@ -13,8 +13,6 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using PreFlight_API.API.Middleware;
-using PreFlight_API.API.Models;
-using PreFlight_API.API.Swagger;
 using Swashbuckle.AspNetCore.Filters;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
@@ -23,6 +21,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Serilog.Events;
+using PreFlight_API.BLL.Models;
 
 namespace PreFlight_API.API
 {
@@ -74,7 +73,7 @@ namespace PreFlight_API.API
                     .AllowCredentials());
             });
 
-            services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+           
             services.AddSwaggerGen(opt =>
             {
                 opt.ExampleFilters();

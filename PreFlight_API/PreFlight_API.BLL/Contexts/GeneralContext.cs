@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PreFlight.AI.Shared.Things;
 using PreFlight_API.BLL.Models;
 
 namespace PreFlight_API.BLL.Contexts
@@ -27,10 +26,17 @@ namespace PreFlight_API.BLL.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserModel>()
-                .Ignore(c => c.ProfilePicture);
+                .Ignore(c => c.ProfilePicture)
+                .Ignore(d => d.Password);
 
             modelBuilder.Entity<Employee>()
-              .Ignore(c => c.ProfilePicture);
+              .Ignore(c => c.ProfilePicture)
+              .Ignore(d => d.Password);
+
+            modelBuilder.Entity<Location>()
+             .Ignore(c => c.Latitude)
+             .Ignore(c => c.Longitude);
+
 
             base.OnModelCreating(modelBuilder);
         }

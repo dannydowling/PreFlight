@@ -9,7 +9,7 @@ using PreFlight_API.BLL.Models;
 
 namespace PreFlight_API.API.Middleware
 {
-    public class RegisterRequestValidator : AbstractValidator<RegisterRequest>
+    public class RegisterRequestValidator : AbstractValidator<RegisterEmplpyeeRequest>
     {
         public RegisterRequestValidator(StateRepository repository)
         {
@@ -133,7 +133,7 @@ namespace PreFlight_API.API.Middleware
         }
     }
 
-    public class EditPersonalInfoRequestValidator : AbstractValidator<EditPersonalInfoRequest>
+    public class EditPersonalInfoRequestValidator : AbstractValidator<EditEmployeeInfoRequest>
     {
         public EditPersonalInfoRequestValidator(StateRepository repository)
         {

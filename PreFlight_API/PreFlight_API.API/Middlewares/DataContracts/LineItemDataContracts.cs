@@ -1,69 +1,51 @@
-﻿using System;
+﻿using PreFlight_API.BLL.Models;
+using System;
 
 namespace PreFlight_API.API.Middlewares.DataContracts
 {
-    public class RegisterRequest
+    public class RegisterLineItemRequest : LineItemDto
     {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string JobCategory { get; set; }
-        public DateTime BirthDate { get; set; }
-        public string PhoneNumber { get; set; }
-        public LocationDto[] Addresses { get; set; }
-
-        public string Password { get; set; }
+        // what information will we provide/require whenever one of these requests comes in.
     }
 
-    public class EmployeeDto
+    public class LineItemDto 
     {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public LocationDto[] Addresses { get; set; }
+        public int Quantity { get; set; }
+
+        public Product Product { get; set; }
+        public Guid ProductId { get; set; }
+
+        public Order Order { get; set; }
     }
 
-    public class LocationDto
-    {
-        public string Street { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string ZipCode { get; set; }
-    }
+  
 
-    public class RegisterResponse
+    public class RegisterLineItemResponse
     {
         public long Id { get; set; }
     }
 
-    public class EditPersonalInfoRequest
+    public class EditLineItemRequest
     {
-        public string Name { get; set; }
-        public LocationDto[] Addresses { get; set; }
+        public int Quantity { get; set; }
+
+        public Product Product { get; set; }
     }
 
-    public class JobRoleRequest
+    public class OrderRequest
     {
-        public RoleEnrollmentDto[] Enrollments { get; set; }
+        public OrderEnrollmentDto[] Enrollments { get; set; }
     }
 
-    public class RoleEnrollmentDto
+    public class OrderEnrollmentDto
     {
-        public string JobCategory { get; set; }
+        public Order order { get; set; }
     }
 
-    public class GetResponse
+    public class GetOrderResponse
     {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public LocationDto[] Addresses { get; set; }
-        public RoleEnrollmentDto[] Enrollments { get; set; }
+        public Product[] Products { get; set; }
+        public OrderEnrollmentDto[] Enrollments { get; set; }
     }
 }
 
-
-// employee
-// user
-// weather
-// location
-// role
-// order
-// product

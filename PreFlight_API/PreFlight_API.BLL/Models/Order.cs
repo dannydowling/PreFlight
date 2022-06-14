@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PreFlight.AI.Shared.Things
+namespace PreFlight_API.BLL.Models
 {
     public class Order
     {

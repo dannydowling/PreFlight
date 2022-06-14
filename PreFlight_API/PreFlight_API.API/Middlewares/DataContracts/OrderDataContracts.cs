@@ -2,7 +2,7 @@
 
 namespace PreFlight_API.API.Middlewares.DataContracts
 {
-    public class RegisterRequest
+    public class RegisterEmplpyeeRequest
     {
         public string Name { get; set; }
         public string Email { get; set; }
@@ -29,12 +29,12 @@ namespace PreFlight_API.API.Middlewares.DataContracts
         public string ZipCode { get; set; }
     }
 
-    public class RegisterResponse
+    public class RegisterEmployeeResponse
     {
         public long Id { get; set; }
     }
 
-    public class EditPersonalInfoRequest
+    public class EditEmployeeInfoRequest
     {
         public string Name { get; set; }
         public LocationDto[] Addresses { get; set; }
@@ -50,7 +50,7 @@ namespace PreFlight_API.API.Middlewares.DataContracts
         public string JobCategory { get; set; }
     }
 
-    public class GetResponse
+    public class GetEmployeeResponse
     {
         public string Name { get; set; }
         public string Email { get; set; }
