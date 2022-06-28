@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using PreFlight_API.BLL.Models;
 
 namespace PreFlight_API.BLL
 {

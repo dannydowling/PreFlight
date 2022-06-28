@@ -1,0 +1,6 @@
+C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlight_API\PreFlight_API.API\obj\Debug\net6.0\PreFlight_API.API.csproj.AssemblyReference.cache
+C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlight_API\PreFlight_API.API\obj\Debug\net6.0\PreFlight_API.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlight_API\PreFlight_API.API\obj\Debug\net6.0\PreFlight_API.API.AssemblyInfoInputs.cache
+C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlight_API\PreFlight_API.API\obj\Debug\net6.0\PreFlight_API.API.AssemblyInfo.cs
+C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlight_API\PreFlight_API.API\obj\Debug\net6.0\PreFlight_API.API.csproj.CoreCompileInputs.cache
+C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlight_API\PreFlight_API.API\obj\Debug\net6.0\PreFlight_API.API.MvcApplicationPartsAssemblyInfo.cache

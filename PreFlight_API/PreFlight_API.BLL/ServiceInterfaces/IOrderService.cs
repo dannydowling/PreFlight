@@ -2,16 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using PreFlight_API.BLL.Models;
 
 namespace PreFlight_API.BLL
 {
-    public interface IUserService
+    public interface IOrderService
     {
-        Task<IEnumerable<UserModel>> GetUserListAsync(int pageNumber, int pageSize);
-        Task<UserModel> GetUserAsync(Guid id);
-        Task<UserModel> CreateUserAsync(UserModel user);
-        Task UpdateUserAsync(UserModel user);
-        Task DeleteUserAsync(Guid id);
+        Task<IEnumerable<Order>> GetOrderListAsync(int pageNumber, int pageSize);
+        Task<Order> GetOrderAsync(Guid id);
+        Task<Order> CreateOrderAsync(Order order);
+        Task UpdateOrderAsync(Order order);
+        Task DeleteOrderAsync(Guid id);
     }
 }

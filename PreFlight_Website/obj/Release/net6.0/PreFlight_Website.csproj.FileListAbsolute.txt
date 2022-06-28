@@ -1,0 +1,8 @@
+C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlight_Website\obj\Release\net6.0\PreFlight_Website.csproj.AssemblyReference.cache
+C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlight_Website\obj\Release\net6.0\PreFlight_Website.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlight_Website\obj\Release\net6.0\PreFlight_Website.AssemblyInfoInputs.cache
+C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlight_Website\obj\Release\net6.0\PreFlight_Website.AssemblyInfo.cs
+C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlight_Website\obj\Release\net6.0\PreFlight_Website.csproj.CoreCompileInputs.cache
+C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlight_Website\obj\Release\net6.0\PreFlight_Website.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlight_Website\obj\Release\net6.0\PreFlight_Website.RazorAssemblyInfo.cache
+C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlight_Website\obj\Release\net6.0\PreFlight_Website.RazorAssemblyInfo.cs

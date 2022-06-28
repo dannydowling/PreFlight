@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PreFlight.AI.Shared.Things;
 using PreFlight.Infrastructure.Repositories;
 using PreFlight_API.BLL.Contexts;
-
+using PreFlight_API.BLL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
